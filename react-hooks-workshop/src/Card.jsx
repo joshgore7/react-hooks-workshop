@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function Card() {
     const [pokemonData, setPokemonData] = useState([]);
@@ -22,7 +22,7 @@ function Card() {
         <div className="cards-container">
             {pokemonData.map((pokemon) => (
                 <div className="card" key={pokemon.id}>
-                    <a href="https://pokeapi.co/">
+                    <a href={`${pokemon.name}`}>
                         <img className="card-image" src={pokemon.sprites.front_shiny}/>
                     </a>
                     <p>{pokemon.name}</p>

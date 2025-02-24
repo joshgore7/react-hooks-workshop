@@ -3,11 +3,13 @@ import Details from "./Details"
 
 
 function App() {
+
     return (
-        <div className="app">
+        <div>
             <Card/>
-            <Details/>
+            {/* <Details/> */}
         </div>
+
     )
 
 }
