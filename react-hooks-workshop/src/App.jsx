@@ -1,17 +1,15 @@
+
 import Card from "./Card"
-import Details from "./Details"
+
 
 
 function App() {
-
     return (
-        <div>
-            <Card/>
-            {/* <Details/> */}
-        </div>
-
-    )
-
-}
+      <div>
+        <h1>Pokédex</h1>
+        <Card /> 
+      </div>
+    );
+  }
 
 export default App
