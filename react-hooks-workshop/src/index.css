@@ -35,6 +35,7 @@ h1{
   width: 100%;
   height: 100%;
   background:rgba(255,255,255);
+  overflow-y: auto;
 }
 .pokemon-info{
   flex: 1;
@@ -49,9 +50,9 @@ button{
 
 /* MOVES CSS */
 .moves-container {
-  width: 100%; 
-  overflow-x: auto; 
-  padding: 10px 0; 
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0;
   display: flex;
 }
 
