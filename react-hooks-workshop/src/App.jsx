@@ -6,7 +6,11 @@ import Card from "./Card"
 function App() {
     return (
       <div>
-        <h1>Pokédex</h1>
+        <div className="title">
+          <p>Who's that</p>
+          <img className="logo" src="./Pokemon_logo.svg.png" alt="" />
+          <p>?</p>
+        </div>
         <Card /> 
       </div>
     );

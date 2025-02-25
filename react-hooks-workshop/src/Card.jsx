@@ -88,10 +88,9 @@ function Card() {
             >
               <img
                 className="card-image"
-                src={pokemon.sprites.front_shiny}
+                src={pokemon.sprites.back_shiny}
                 alt={pokemon.name}
               />
-              <p>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
             </div>
           ))}
         </div>
