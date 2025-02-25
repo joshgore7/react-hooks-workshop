@@ -13,14 +13,12 @@ font-size: 20px;
 .title p{
   font-size: 60px;
   font-family: "Pokemon Solid";
-  font-weight: lighter;
 }
 
 /* POKEMON CARD CSS */
 .card{
   border-radius: 10px;
   margin: 3px;
-  max-width: 250px;
   display: inline-block;
   cursor: pointer;
 }
@@ -36,9 +34,6 @@ h1{
   padding-left: 20px;
 }
 .logo{
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
   height: 150px;
   width: 400px;
 }
@@ -77,6 +72,7 @@ li{
 .moves-title{
   margin-left: 30px;
 }
+
 /* LOADING CSS */
 .loading {
   display: flex;
@@ -126,12 +122,10 @@ button {
   margin-left:auto;
   margin-right:auto;
 }
-
 button:hover {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
   transform: translate3d(0, 2px, 0);
 }
-
 button:focus {
   box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }

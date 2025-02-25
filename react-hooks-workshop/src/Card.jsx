@@ -30,9 +30,7 @@ function Card() {
       const speciesRes = await fetch( `https://pokeapi.co/api/v2/pokemon-species/${id}`);
       const speciesData = await speciesRes.json();
 
-      const description = speciesData.flavor_text_entries.find(
-        (entry) => entry.language.name === "en"
-      )?.flavor_text;
+      const description = speciesData.flavor_text_entries?.[0]?.flavor_text
 
       setSelectedPokemon({
         name: detailsData.name,
