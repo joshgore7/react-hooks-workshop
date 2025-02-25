@@ -35,7 +35,7 @@ function Card() {
       setSelectedPokemon({
         name: detailsData.name,
         sprite: detailsData.sprites.front_shiny,
-        description: description || "No description available.",
+        description: description,
         types: detailsData.types.map((type) => type.type.name).join(", "),
         height: detailsData.height / 10,
         weight: detailsData.weight / 10,
