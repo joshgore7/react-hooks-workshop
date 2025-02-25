@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 function Card() {
     const [pokemonData, setPokemonData] = useState([]);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [loading, setLoading] = useState(true);
   
     useEffect(() => {
     const fetchPokemon = async () => {
@@ -14,10 +15,19 @@ function Card() {
             return await pokemonRes.json();
         }));
         setPokemonData(allPokemon);
+        setLoading(false);
     };
 
     fetchPokemon();
     }, []);
+
+    if (loading) {
+        return (
+          <div className="loading">
+            <div className="spinner"></div>
+          </div>
+        );
+      }
 
     const fetchPokemonDetails = async (id) => {
         const detailsRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -30,6 +40,8 @@ function Card() {
 
         setSelectedPokemon({
             name: detailsData.name,
+            sprite: detailsData.sprites.front_shiny,
+            description: description,
             types: detailsData.types.map(type => type.type.name).join(', '),
             height: detailsData.height / 10, 
             weight: detailsData.weight / 10, 
@@ -37,8 +49,7 @@ function Card() {
                 name: stat.stat.name,
                 base_stat: stat.base_stat
             })),
-            description: description || 'No description available.',
-            sprite: detailsData.sprites.front_shiny
+            moves: detailsData.moves.map(move => move.move.name).slice(0, 20)           
         });
     };
   
@@ -53,23 +64,33 @@ function Card() {
                 ))}
             </div>
 
-
             {selectedPokemon && (
-                <div className="pokemon-details">
-                    <h2>{selectedPokemon.name}</h2>
-                    <img className="pokemon-image" src={selectedPokemon.sprite} alt={selectedPokemon.name} />
-                    <p><strong>Type:</strong> {selectedPokemon.types}</p>
-                    <p><strong>Height:</strong> {selectedPokemon.height} m</p>
-                    <p><strong>Weight:</strong> {selectedPokemon.weight} kg</p>
-                    <p><strong>Description:</strong> {selectedPokemon.description}</p>
-                    <h3>Stats:</h3>
-                    <ul>
-                        {selectedPokemon.stats.map((stat) => (
-                            <li key={stat.name}>
-                                {stat.name}: {stat.base_stat}
-                            </li>
-                        ))}
-                    </ul>
+                <div className="details-container">
+                    <h1>Pokédex</h1>
+                    <button onClick={() => setSelectedPokemon(null)}>Back to Pokédex</button>
+                    <div className="pokemon-info">
+                        <h2>{selectedPokemon.name}</h2>
+                        <img className="pokemon-image" src={selectedPokemon.sprite} alt={selectedPokemon.name} />
+                        <p>{selectedPokemon.description}</p>
+                        <p><strong>Type:</strong> {selectedPokemon.types}</p>
+                        <p><strong>Height:</strong> {selectedPokemon.height}m <strong>Weight:</strong> {selectedPokemon.weight}kg</p>
+                        <h3>Stats:</h3>
+                        <ul>
+                            {selectedPokemon.stats.map((stat) => (
+                                <li key={stat.name}>
+                                    {stat.name}: {stat.base_stat}
+                                </li>
+                            ))}
+                        </ul>
+                        <h3>Moves:</h3>
+                        <div className="moves-container">
+                            <ul>
+                                {selectedPokemon.moves.map((move) => (
+                                <li key={move}>{move}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             )}
         </div>
