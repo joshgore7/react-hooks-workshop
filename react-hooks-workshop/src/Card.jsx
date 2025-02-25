@@ -5,11 +5,9 @@ function Card() {
   const [pokemonData, setPokemonData] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPokemon = async () => {
-      try {
         const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
         const data = await res.json();
         const allPokemon = await Promise.all(
@@ -20,23 +18,16 @@ function Card() {
         );
         setPokemonData(allPokemon);
         setLoading(false);
-      } catch (err) {
-        setError("Failed to load Pokémon data. Please try again.");
-        setLoading(false);
-      }
     };
 
     fetchPokemon();
   }, []);
 
   const fetchPokemonDetails = async (id) => {
-    try {
       const detailsRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
       const detailsData = await detailsRes.json();
 
-      const speciesRes = await fetch(
-        `https://pokeapi.co/api/v2/pokemon-species/${id}`
-      );
+      const speciesRes = await fetch( `https://pokeapi.co/api/v2/pokemon-species/${id}`);
       const speciesData = await speciesRes.json();
 
       const description = speciesData.flavor_text_entries.find(
@@ -56,11 +47,7 @@ function Card() {
         })),
         moves: detailsData.moves.map((move) => move.move.name),
       });
-    } catch (err) {
-      setError("Failed to load Pokémon details. Please try again.");
-    }
   };
-
   if (loading) {
     return (
       <div className="loading">
@@ -69,11 +56,6 @@ function Card() {
       </div>
     );
   }
-
-  if (error) {
-    return <p className="error">{error}</p>;
-  }
-
   return (
     <div>
       {selectedPokemon ? (
