@@ -51,15 +51,16 @@ function Card() {
   if (loading) {
     return (
       <div className="loading">
-        <p>Loading Pokédex...</p>
-        <div className="spinner"></div>
+        <div className="spinner">
+          <img src="./Pokeball.png" alt="" />
+        </div>
       </div>
     );
   }
   return (
     <div>
       {selectedPokemon ? (
-        <Details pokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon} />
+        <Details pokemon={selectedPokemon} setSelectedPokemon={setSelectedPokemon}/>
       ) : (
         <div className="cards-container">
           {pokemonData.map((pokemon) => (

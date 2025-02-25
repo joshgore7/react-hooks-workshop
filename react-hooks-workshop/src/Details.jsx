@@ -7,7 +7,7 @@ function Details({ pokemon, setSelectedPokemon }) {
       <div>
         <h1>It's {pokemon.name}!</h1>
         <div className="pokemon-info">
-          <img className="pokemon-image" src={pokemon.sprite} alt={pokemon.name} />
+          <img className="pokemon-image" src={pokemon.sprite} alt="" />
           <div className="pokemon-details">
             <p>{pokemon.description}</p>
             <p><strong>Type:</strong> {pokemon.types}</p>
