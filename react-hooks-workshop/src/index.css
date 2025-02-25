@@ -8,7 +8,7 @@ font-size: 20px;
 /* HEADER CSS */
 .title{
   display: inline-flex;
-  margin-left: 20%;
+  margin-left: 25%;
 }
 .title p{
   font-size: 60px;
